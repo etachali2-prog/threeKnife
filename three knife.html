@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KOLBUS Online & Offline PM Record</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef2f7;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.10);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #005baa;
+            font-size: 32px;
+        }
+
+        .header h2 {
+            margin: 8px 0 20px;
+            font-size: 18px;
+            font-weight: normal;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .required {
+            color: #e00000;
+        }
+
+        select,
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd2d9;
+            border-radius: 7px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            background: #fff;
+            transition: 0.2s;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #005baa;
+            box-shadow: 0 0 0 3px rgba(0, 91, 170, 0.10);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 7px;
+            background: #005baa;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #00447f;
+        }
+
+        .submit-btn:disabled {
+            background: #8baac5;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #d4edda;
+            border: 1px solid #b7dfc1;
+            border-radius: 7px;
+            color: #155724;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8d7da;
+            border: 1px solid #f1bfc3;
+            border-radius: 7px;
+            color: #721c24;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px 10px;
+            }
+
+            .container {
+                padding: 22px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .header h2 {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>THREE KNIFE(1,2,3)</h1>
+
+        <h2>Preventive Maintenance Record</h2>
+
+    </div>
+
+
+    <form id="pmForm">
+
+
+        <!-- THREE KNIFE -->
+
+        <div class="form-group">
+
+            <label for="pmMode">
+                Machine Name
+                <span class="required">*</span>
+            </label>
+
+            <select
+                id="pmMode"
+                name="pmMode"
+                required
+            >
+
+                <option value="">-- Select Machine --</option>
+
+                <option value="ONLINE">
+                    THREE KNIFE(1A)
+                </option>
+
+                <option value="OFFLINE">
+                   THREE KNIFE(1B)
+                </option>
+<option value="OFFLINE">
+                   THREE KNIFE(1C)
+                </option>
+            </select>
+
+        </div>
+
+
+        <!-- DATE OF PM -->
+
+        <div class="form-group">
+
+            <label for="pmDate">
+                Date of PM Undertaken
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="date"
+                id="pmDate"
+                name="pmDate"
+                required
+            >
+
+        </div>
+
+
+        <!-- ACTIVITIES -->
+
+        <div class="form-group">
+
+            <label for="activities">
+                Activities Done
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="activities"
+                name="activities"
+                placeholder="Describe the maintenance activities performed..."
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- MATERIALS -->
+
+        <div class="form-group">
+
+            <label for="materials">
+                Material Used
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="materials"
+                name="materials"
+                placeholder="Enter materials used..."
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- SPARE PARTS -->
+
+        <div class="form-group">
+
+            <label for="spares">
+                Spare Part Used
+            </label>
+
+            <textarea
+                id="spares"
+                name="spares"
+                placeholder="Enter spare parts used or replaced..."
+            ></textarea>
+
+        </div>
+
+
+        <!-- NEXT PM -->
+
+        <div class="form-group">
+
+            <label for="nextPM">
+                Next PM Scheduled
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="date"
+                id="nextPM"
+                name="nextPM"
+                required
+            >
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            type="submit"
+            class="submit-btn"
+            id="submitButton"
+        >
+            Submit PM Record
+        </button>
+
+
+    </form>
+
+
+    <!-- SUCCESS MESSAGE -->
+
+    <div
+        id="successMessage"
+        class="success-message"
+    >
+        ✓ PM record saved successfully to Google Sheets.
+    </div>
+
+
+    <!-- ERROR MESSAGE -->
+
+    <div
+        id="errorMessage"
+        class="error-message"
+    >
+        Unable to save the PM record.
+    </div>
+
+
+    <div class="footer">
+        THREE KNIFE Preventive Maintenance System
+    </div>
+
+</div>
+
+
+<script>
+
+    // =====================================================
+    // GOOGLE APPS SCRIPT WEB APP URL
+    // =====================================================
+
+    const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbwGAclJsq8kJpwfKrb_C9EVp-GPStu_tBeL6JAO8dg_Ly3BoiQo2c1SGeT3XLy_GMSuDg/exec";
+
+
+    // =====================================================
+    // GET FORM ELEMENTS
+    // =====================================================
+
+    const form =
+        document.getElementById("pmForm");
+
+    const pmMode =
+        document.getElementById("pmMode");
+
+    const pmDate =
+        document.getElementById("pmDate");
+
+    const activities =
+        document.getElementById("activities");
+
+    const materials =
+        document.getElementById("materials");
+
+    const spares =
+        document.getElementById("spares");
+
+    const nextPM =
+        document.getElementById("nextPM");
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+
+    // =====================================================
+    // TODAY'S DATE
+    // =====================================================
+
+    const today =
+        new Date().toISOString().split("T")[0];
+
+
+    // PM undertaken cannot be in the future
+    pmDate.max = today;
+
+
+    // Next PM cannot be before today
+    nextPM.min = today;
+
+
+    // =====================================================
+    // WHEN PM DATE CHANGES
+    // =====================================================
+
+    pmDate.addEventListener("change", function () {
+
+        if (pmDate.value) {
+
+            nextPM.min = pmDate.value;
+
+            if (
+                nextPM.value &&
+                nextPM.value < pmDate.value
+            ) {
+
+                nextPM.value = "";
+
+            }
+
+        }
+
+    });
+
+
+    // =====================================================
+    // FORM SUBMISSION
+    // =====================================================
+
+    form.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            // Hide previous messages
+
+            successMessage.style.display = "none";
+
+            errorMessage.style.display = "none";
+
+
+            // =================================================
+            // VALIDATE DATES
+            // =================================================
+
+            const pmDateValue =
+                new Date(pmDate.value);
+
+            const nextPMValue =
+                new Date(nextPM.value);
+
+
+            if (nextPMValue < pmDateValue) {
+
+                errorMessage.textContent =
+                    "Next PM Scheduled date cannot be before the PM Undertaken date.";
+
+                errorMessage.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            // =================================================
+            // PREPARE DATA
+            // =================================================
+
+            const data = {
+
+                pmMode:
+                    pmMode.value,
+
+                pmDate:
+                    pmDate.value,
+
+                activities:
+                    activities.value.trim(),
+
+                materials:
+                    materials.value.trim(),
+
+                spares:
+                    spares.value.trim(),
+
+                nextPM:
+                    nextPM.value
+
+            };
+
+
+            // =================================================
+            // DISABLE SUBMIT BUTTON
+            // =================================================
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "Saving...";
+
+
+            try {
+
+                // =============================================
+                // SEND DATA TO GOOGLE APPS SCRIPT
+                // =============================================
+
+                const response =
+                    await fetch(
+                        GOOGLE_SCRIPT_URL,
+                        {
+                            method: "POST",
+
+                            body:
+                                JSON.stringify(data)
+                        }
+                    );
+
+
+                // =============================================
+                // READ RESPONSE
+                // =============================================
+
+                const result =
+                    await response.json();
+
+
+                // =============================================
+                // SUCCESS
+                // =============================================
+
+                if (result.success) {
+
+                    successMessage.textContent =
+                        "✓ " +
+                        data.pmMode +
+                        " PM record saved successfully to Google Sheets.";
+
+                    successMessage.style.display =
+                        "block";
+
+
+                    // Reset form
+
+                    form.reset();
+
+
+                    // Restore date limits
+
+                    pmDate.max =
+                        today;
+
+                    nextPM.min =
+                        today;
+
+
+                    // Scroll to success message
+
+                    successMessage.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }
+
+
+                // =============================================
+                // ERROR FROM GOOGLE SCRIPT
+                // =============================================
+
+                else {
+
+                    throw new Error(
+                        result.message ||
+                        "Google Sheets returned an error."
+                    );
+
+                }
+
+            }
+
+
+            catch (error) {
+
+                console.error(error);
+
+                errorMessage.textContent =
+                    "❌ Unable to save the record. Please check your Google Apps Script URL and deployment settings.";
+
+                errorMessage.style.display =
+                    "block";
+
+
+                errorMessage.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+
+
+            finally {
+
+                // Enable button again
+
+                submitButton.disabled =
+                    false;
+
+                submitButton.textContent =
+                    "Submit PM Record";
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
